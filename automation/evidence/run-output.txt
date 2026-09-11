@@ -1,0 +1,84 @@
+
+Warning: The allowCypressEnv configuration option is enabled. This allows any browser code to read values from Cypress.env(). This is insecure and will be removed in a future major version.
+
+1. Replace Cypress.env() calls with cy.env() (for sensitive values) or Cypress.expose() (for public configuration)
+2. Set allowCypressEnv: false in your Cypress configuration to disable Cypress.env()
+
+Learn more: https://on.cypress.io/cypress-env-migration
+
+
+====================================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:        15.21.1                                                                        │
+  │ Browser:        Electron 138 (headless)                                                        │
+  │ Node Version:   v24.15.0 (C:\Program Files\nodejs\node.exe)                                    │
+  │ Specs:          1 found (login.cy.js)                                                          │
+  │ Searched:       D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\e2e\login.cy.j │
+  │                 s                                                                              │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  login.cy.js                                                                     (1 of 1)
+
+
+  Smoke Test - Inicio de sesion SauceDemo
+    √ Login exitoso con credenciales validas (5278ms)
+    √ Login fallido con contrasena incorrecta (2290ms)
+    √ Validacion de campo obligatorio: usuario y password vacios (950ms)
+    √ Validacion de campo obligatorio: password vacio (1345ms)
+    √ Caso adicional: usuario bloqueado (locked_out_user) (2346ms)
+
+
+  5 passing (13s)
+
+
+  (Results)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Tests:        5                                                                                │
+  │ Passing:      5                                                                                │
+  │ Failing:      0                                                                                │
+  │ Pending:      0                                                                                │
+  │ Skipped:      0                                                                                │
+  │ Screenshots:  5                                                                                │
+  │ Video:        true                                                                             │
+  │ Duration:     12 seconds                                                                       │
+  │ Spec Ran:     login.cy.js                                                                      │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+  (Screenshots)
+
+  -  D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\screenshots\logi    (1280x1110)
+     n.cy.js\login-exitoso.png                                                                      
+  -  D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\screenshots\logi     (1280x720)
+     n.cy.js\login-fallido-password-incorrecta.png                                                  
+  -  D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\screenshots\logi     (1280x720)
+     n.cy.js\validacion-campos-vacios.png                                                           
+  -  D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\screenshots\logi     (1280x720)
+     n.cy.js\validacion-password-vacio.png                                                          
+  -  D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\screenshots\logi     (1280x720)
+     n.cy.js\login-usuario-bloqueado.png                                                            
+
+
+  (Video)
+
+  -  Video output: D:\Usuarios\Desktop\QA\makers-prueba-tecnica\automation\cypress\videos\login.cy.js.mp4
+
+
+====================================================================================================
+
+  (Run Finished)
+
+
+       Spec                                              Tests  Passing  Failing  Pending  Skipped  
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ ✔  login.cy.js                              00:12        5        5        -        -        - │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+    ✔  All specs passed!                        00:12        5        5        -        -        -  
+

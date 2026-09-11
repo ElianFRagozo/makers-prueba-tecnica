@@ -1,0 +1,16 @@
+PASS api/tests/reqres.test.js
+  API MakersPay/QA - reqres.in /users
+    √ POST /users crea un usuario y responde 201 con el contrato esperado (549 ms)
+    √ Hallazgo: GET /users/{id} con el id devuelto por el POST no persiste (mock de reqres.in) (564 ms)
+    √ GET /users/{id} para un usuario existente en el dataset fijo responde 200 con el contrato esperado (172 ms)
+    √ Caso adicional: GET /users/{id} inexistente responde 404 (310 ms)
+    √ Caso adicional: POST /users con body incompleto (solo job) aun responde 201 (236 ms)
+    √ Caso adicional: GET /users?page=2 respeta paginacion (168 ms)
+    √ Caso adicional: DELETE /users/{id} responde 204 (158 ms)
+    √ Caso adicional: GET /users/2 responde dentro de un presupuesto de 2000ms (28 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       8 passed, 8 total
+Snapshots:   0 total
+Time:        4.17 s
+Ran all test suites.
