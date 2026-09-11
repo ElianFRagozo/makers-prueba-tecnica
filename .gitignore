@@ -3,3 +3,4 @@ automation/cypress/videos/
 automation/cypress/downloads/
 automation/cypress/screenshots/
 *.log
+.gstack/

@@ -1,0 +1,68 @@
+
+> makers-prueba-tecnica@1.0.0 test:api:postman
+> newman run api/postman/MakersPay-API.postman_collection.json --reporters cli,htmlextra --reporter-htmlextra-export api/evidence/postman-report.html
+
+(node:9348) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+(Use `node --trace-deprecation ...` to show where the warning was created)
+newman
+
+MakersPay - Modulo API (reqres.in)
+
+→ 1. POST /users - crear usuario (201)
+  POST https://reqres.in/api/users [201 Created, 2.4kB, 494ms]
+  √  Status code es 201
+  √  name coincide con lo enviado
+  √  job coincide con lo enviado
+  √  la respuesta trae id y createdAt
+
+→ 2. GET /users/{id creado} - hallazgo: no persiste (404)
+  GET https://reqres.in/api/users/785 [404 Not Found, 1.9kB, 280ms]
+  √  reqres.in no persiste el usuario creado por POST -> 404 esperado
+
+→ 3. GET /users/2 - usuario existente (200)
+  GET https://reqres.in/api/users/2 [200 OK, 2.75kB, 307ms]
+  √  Status code es 200
+  √  trae los datos esperados de Janet Weaver
+
+→ 4. Adicional - GET /users/9999999 inexistente (404)
+  GET https://reqres.in/api/users/9999999 [404 Not Found, 1.89kB, 281ms]
+  √  Status code es 404
+
+→ 5. Adicional - POST /users con body incompleto (201)
+  POST https://reqres.in/api/users [201 Created, 2.39kB, 277ms]
+  √  Status code es 201 aunque falte name
+  √  job llega correcto, name queda undefined
+
+→ 6. Adicional - GET /users?page=2 paginacion (200)
+  GET https://reqres.in/api/users?page=2 [200 OK, 3.49kB, 291ms]
+  √  Status code es 200
+  √  page=2 y data es un arreglo no vacio
+
+→ 7. Adicional - DELETE /users/2 (204)
+  DELETE https://reqres.in/api/users/2 [204 No Content, 1.83kB, 189ms]
+  √  Status code es 204
+
+→ 8. Adicional - GET /users/2 dentro de presupuesto de 2000ms
+  GET https://reqres.in/api/users/2 [200 OK, 2.75kB, 79ms]
+  √  Status code es 200
+  √  responde en menos de 2000ms
+
+┌─────────────────────────┬────────────────────┬────────────────────┐
+│                         │           executed │             failed │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              iterations │                  1 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│                requests │                  8 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│            test-scripts │                  8 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│      prerequest-scripts │                  0 │                  0 │
+├─────────────────────────┼────────────────────┼────────────────────┤
+│              assertions │                 15 │                  0 │
+├─────────────────────────┴────────────────────┴────────────────────┤
+│ total run duration: 2.8s                                          │
+├───────────────────────────────────────────────────────────────────┤
+│ total data received: 4.08kB (approx)                              │
+├───────────────────────────────────────────────────────────────────┤
+│ average response time: 274ms [min: 79ms, max: 494ms, s.d.: 109ms] │
+└───────────────────────────────────────────────────────────────────┘

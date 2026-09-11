@@ -1,0 +1,186 @@
+{
+  "info": {
+    "name": "MakersPay - Modulo API (reqres.in)",
+    "description": "Coleccion Postman de la prueba tecnica QA Makers - modulo API. Ejecutada con Newman contra https://reqres.in/api real.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://reqres.in/api" },
+    { "key": "createdId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "1. POST /users - crear usuario (201)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code es 201', function () { pm.response.to.have.status(201); });",
+              "const body = pm.response.json();",
+              "pm.test('name coincide con lo enviado', function () { pm.expect(body.name).to.eql('Test User'); });",
+              "pm.test('job coincide con lo enviado', function () { pm.expect(body.job).to.eql('Automation Engineer'); });",
+              "pm.test('la respuesta trae id y createdAt', function () { pm.expect(body.id).to.exist; pm.expect(body.createdAt).to.exist; });",
+              "pm.collectionVariables.set('createdId', body.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test User\",\n  \"job\": \"Automation Engineer\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+      }
+    },
+    {
+      "name": "2. GET /users/{id creado} - hallazgo: no persiste (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('reqres.in no persiste el usuario creado por POST -> 404 esperado', function () { pm.response.to.have.status(404); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/users/{{createdId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["users", "{{createdId}}"]
+        }
+      }
+    },
+    {
+      "name": "3. GET /users/2 - usuario existente (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code es 200', function () { pm.response.to.have.status(200); });",
+              "const body = pm.response.json();",
+              "pm.test('trae los datos esperados de Janet Weaver', function () {",
+              "  pm.expect(body.data.id).to.eql(2);",
+              "  pm.expect(body.data.email).to.include('@');",
+              "  pm.expect(body.data.first_name).to.be.a('string');",
+              "  pm.expect(body.data.avatar).to.include('http');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/users/2", "host": ["{{baseUrl}}"], "path": ["users", "2"] }
+      }
+    },
+    {
+      "name": "4. Adicional - GET /users/9999999 inexistente (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code es 404', function () { pm.response.to.have.status(404); });"]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/users/9999999", "host": ["{{baseUrl}}"], "path": ["users", "9999999"] }
+      }
+    },
+    {
+      "name": "5. Adicional - POST /users con body incompleto (201)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code es 201 aunque falte name', function () { pm.response.to.have.status(201); });",
+              "const body = pm.response.json();",
+              "pm.test('job llega correcto, name queda undefined', function () { pm.expect(body.job).to.eql('Automation Engineer'); pm.expect(body.name).to.be.undefined; });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"job\": \"Automation Engineer\"\n}" },
+        "url": { "raw": "{{baseUrl}}/users", "host": ["{{baseUrl}}"], "path": ["users"] }
+      }
+    },
+    {
+      "name": "6. Adicional - GET /users?page=2 paginacion (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code es 200', function () { pm.response.to.have.status(200); });",
+              "const body = pm.response.json();",
+              "pm.test('page=2 y data es un arreglo no vacio', function () { pm.expect(body.page).to.eql(2); pm.expect(body.data).to.be.an('array').that.is.not.empty; });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/users?page=2",
+          "host": ["{{baseUrl}}"],
+          "path": ["users"],
+          "query": [{ "key": "page", "value": "2" }]
+        }
+      }
+    },
+    {
+      "name": "7. Adicional - DELETE /users/2 (204)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": ["pm.test('Status code es 204', function () { pm.response.to.have.status(204); });"]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "url": { "raw": "{{baseUrl}}/users/2", "host": ["{{baseUrl}}"], "path": ["users", "2"] }
+      }
+    },
+    {
+      "name": "8. Adicional - GET /users/2 dentro de presupuesto de 2000ms",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code es 200', function () { pm.response.to.have.status(200); });",
+              "pm.test('responde en menos de 2000ms', function () { pm.expect(pm.response.responseTime).to.be.below(2000); });"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{baseUrl}}/users/2", "host": ["{{baseUrl}}"], "path": ["users", "2"] }
+      }
+    }
+  ]
+}
