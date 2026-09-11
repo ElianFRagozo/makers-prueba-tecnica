@@ -5,7 +5,7 @@ Checklist go/no-go basado en evidencia real de ejecución (skill `release-readin
 | Módulo | Entregable | Estado | Evidencia |
 |---|---|---|---|
 | 1 — Automatización | Smoke test de login (Cypress): login exitoso, contraseña incorrecta, campos obligatorios (x2) + caso extra usuario bloqueado | ✅ Done — 5/5 passing | `automation/evidence/run-output.txt`, `automation/evidence/screenshots/*.png` |
-| 2 — Funcional | Escenarios, 15 casos de prueba, matriz de riesgo, técnicas declaradas, 3 bugs simulados | ✅ Done | `functional/MODULO-FUNCIONAL.md` |
+| 2 — Funcional | Escenarios, 15 casos de prueba, matriz de riesgo, técnicas declaradas, 3 bugs simulados | ✅ Done | `functional/Modulo-Funcional-MakersPay.pdf` |
 | 3 — API | POST/GET sobre reqres.in + 5 casos adicionales | ✅ Done — 8/8 (Jest) y 15/15 assertions (Postman/Newman) passing | `api/evidence/run-output.txt`, `api/evidence/postman-run-output.txt`, `api/evidence/postman-report.html`, `api/postman/MakersPay-API.postman_collection.json` |
 
 ## Hallazgo relevante (no bloqueante)

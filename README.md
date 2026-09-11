@@ -32,7 +32,7 @@ Evidencia de la última ejecución real (no simulada) queda en `automation/evide
 
 ## Módulo 2 (Funcional)
 
-Es documental — no requiere ejecución. Ver `functional/MODULO-FUNCIONAL.md`: técnicas y tipos de prueba, matriz de riesgo, escenarios, 15 casos de prueba y 3 reportes de bug simulados.
+Es documental — no requiere ejecución. Ver `functional/Modulo-Funcional-MakersPay.pdf`: técnicas y tipos de prueba, matriz de riesgo, escenarios, 15 casos de prueba y 3 reportes de bug simulados.
 
 ## Skills de QA usadas (petrkindlmann/qa-skills)
 

@@ -26,7 +26,7 @@ No aplica desarrollo de producto propio — este repo es exclusivamente de prueb
 - **Test Directory:** `api/tests/`
 
 ### Manual / Funcional
-- **Ninguna herramienta de gestión (TestRail/Xray/Zephyr) — None selected yet.** Casos de prueba documentados en Markdown en `functional/MODULO-FUNCIONAL.md`.
+- **Ninguna herramienta de gestión (TestRail/Xray/Zephyr) — None selected yet.** Casos de prueba documentados en PDF en `functional/Modulo-Funcional-MakersPay.pdf`.
 
 ## CI/CD
 None selected yet — es una prueba técnica de candidato individual, sin pipeline. Los tests se corren localmente (`npm run test:login`, `npm run test:api`) y la evidencia de la ejecución real queda commiteada en `automation/evidence/` y `api/evidence/`.
@@ -45,7 +45,7 @@ Maturity: **startup / candidato individual**. Metas para esta prueba técnica:
 | Área | Riesgo | Impacto de negocio | Notas |
 |---|---|---|---|
 | Login (SauceDemo) | Importante | Alto si falla — bloquea el acceso a toda la app | Flujo simple pero es la puerta de entrada; probar primero. |
-| Transferencia de dinero (MakersPay) | Crítico | Alto — riesgo financiero directo | Ver matriz de riesgo detallada en `functional/MODULO-FUNCIONAL.md`. |
+| Transferencia de dinero (MakersPay) | Crítico | Alto — riesgo financiero directo | Ver matriz de riesgo detallada en `functional/Modulo-Funcional-MakersPay.pdf`. |
 | Persistencia de datos en reqres.in | Monitorear | Bajo (es un mock público) | Hallazgo real documentado: el `id` devuelto por POST no persiste para un GET posterior — ver `api/evidence/run-output.txt`. |
 
 ## Team
