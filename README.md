@@ -34,14 +34,4 @@ Evidencia de la última ejecución real (no simulada) queda en `automation/evide
 
 Es documental — no requiere ejecución. Ver `functional/Modulo-Funcional-MakersPay.pdf`: técnicas y tipos de prueba, matriz de riesgo, escenarios, 15 casos de prueba y 3 reportes de bug simulados.
 
-## Skills de QA usadas (petrkindlmann/qa-skills)
-
-| Módulo | Skill(s) | Por qué (regla de `AGENTS.md`) |
-|---|---|---|
-| Setup | `qa-project-context` | Dependencia universal; toda otra skill la lee primero. |
-| 1 — Automatización | `cypress-automation` | Coincide exacto con "Cypress"/`cy.`/page objects; no es Playwright ni un caso de healing de tests existentes. |
-| 2 — Funcional | `risk-based-testing` → `test-planning` → `test-case-management` | Regla explícita de desambiguación: riesgo primero, luego escenarios de un solo alcance (no multi-quarter), luego casos formales. Plantilla de bug tomada de `ai-bug-triage` (solo formato). |
-| 3 — API | `api-testing` | Coincide con "API test"/REST/JSON/status codes; no es contract-testing (no hay broker Pact ni un segundo equipo consumidor). |
-| Cierre | `release-readiness` | Checklist go/no-go con evidencia real, no una opinión. |
-
 Ver `RELEASE-READINESS.md` para el veredicto final.
